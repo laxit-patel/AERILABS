@@ -5,6 +5,24 @@ $("#items_table_total_qty").hide();
 $("#items_table_total_amount").hide();
 
 
+//only digits & floating point validator
+$(".allownumericwithdecimal").on("keypress keyup blur",function (event) {
+    //this.value = this.value.replace(/[^0-9\.]/g,'');
+    $(this).val($(this).val().replace(/[^0-9\.]/g,''));
+    if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
+        event.preventDefault();
+    }
+});
+
+//only digits validator
+$(".allownumericwithoutdecimal").on("keypress keyup blur",function (event) {
+    $(this).val($(this).val().replace(/[^\d].+/, ""));
+    if ((event.which < 48 || event.which > 57)) {
+        event.preventDefault();
+    }
+});
+
+
 //logic for custom ajax select menu for inward test
 $("#inward_test_datalist").on('change', function () {
     var val = this.value;
@@ -305,3 +323,4 @@ $('#rates_test').on('change',function () {
     });
 
 });
+

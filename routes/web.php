@@ -103,6 +103,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/quotation', 'QuotationController@index')->name('quotation');
     Route::get('/quotation/create', 'QuotationController@create')->name('createQuotation');
     Route::post('/quotation/create/draft', 'QuotationController@processDraft')->name('processDraft');
+    Route::get('/quotation/create/generate', 'QuotationController@generate')->name('generateQuotation');
 
 });
 

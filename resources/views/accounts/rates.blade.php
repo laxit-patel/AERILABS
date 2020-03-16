@@ -65,10 +65,7 @@
 
                             <hr>
 
-
                             <div id="rates_container" class="bg-bliss text-center">
-
-
 
                                 <div class="row">
                                     <div class="col">
