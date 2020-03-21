@@ -13,13 +13,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
 
@@ -49,15 +48,6 @@ Route::group(['middleware' => 'auth'], function () {
     
 	//add test or quotation into inward route
 	Route::get('/inwardAddTest', 'InwardController@addTest');
-
-	//downlaoding test worksheet using routes
-	Route::get('/download',function(){
-		$path = request()->path;
-        $chunks = explode("\\",$path);
-        $filename = end($chunks);
-        $realpath = realpath($path);
-		return Response::download($realpath);
-	});
 
 	//ajax routes
 	Route::get('/getMaterials/{id}', 'MaterialController@ajax');
@@ -93,6 +83,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/getRatesForClient','RatesController@getRatesForClient');
 
 
+    //client ledger route
+    Route::get('/ledger/view/{client_id}','ClientController@ledger')->name('clientLedger');
+
     //payment Routes
     Route::post('/payment', 'PaymentController@ProcessPayment')->name('ProcessPayment');
 
@@ -104,6 +97,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/quotation/create', 'QuotationController@create')->name('createQuotation');
     Route::post('/quotation/create/draft', 'QuotationController@processDraft')->name('processDraft');
     Route::get('/quotation/create/generate', 'QuotationController@generate')->name('generateQuotation');
+
+    //downlaoding test worksheet using routes
+    Route::get('/download',function(){
+        $path = request()->path;
+        $chunks = explode("\\",$path);
+        $filename = end($chunks);
+        $realpath = realpath($path);
+        return Response::download($realpath);
+    });
 
 });
 

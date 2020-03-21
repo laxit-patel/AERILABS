@@ -94,7 +94,7 @@
                                                         <td>{{$item[0]->test_name}}</td>
                                                         <td >{{$item[0]->test_rate}}</td>
                                                         <td><input class="form-control-sm allownumericwithoutdecimal" type="text" onkeyup='qtyXprice(this)'></td>
-                                                        <td class="total_cell">0</td>
+                                                        <td class="total_cell"><input class="form-control-sm allownumericwithoutdecimal" type="text" ></td>
                                                     </tr>
                                                 @endforeach
 
@@ -105,6 +105,18 @@
                                                     <td id="quotation_final_total">Total</td>
                                                 </tr>
                                             </table>
+                                        </div>
+                                        <div >
+                                            <tr class="text-white">
+                                                <td>Mobilization</td>
+                                                <td>Mobilization</td>
+                                                <td>Mobilization</td>
+                                            </tr>
+                                        </div>
+                                        <div >
+                                            <tr class="text-white">
+                                                Visit Charge
+                                            </tr>
                                         </div>
 
                                         <div >
@@ -144,25 +156,21 @@
             $("#quotation_final_total").text(0);
             function refreshTotal(){
                 var sub_qty;
+                var cell_value;
                 let container;
-                let sub_total;
+                var sub_total;
 
                 $('#tbody_items_table tr').each(function(){
 
-                    $(this).find('.total_cell').each(function(){
+                    $(this).find('.total_cell input').each(function(){
+                        container = $(this).val();
 
-                        if($(this).text())
-                        {
-                            console.log('cell '+ $(this).text())
-                            container = container + $(this).text();
-                            console.log('container value '+ $(this).text())
-                        }
                     })
-                    sub_total = container;
+                    $("#quotation_final_total").text( parseInt($("#quotation_final_total").text()) + Number(container));
                 });
 
                 $("#quotation_final_qty").val();
-                $("#quotation_final_total").text(sub_total);
+
             };
 
             function qtyXprice(el){
@@ -170,7 +178,7 @@
                 var price = $(el).closest('td').prev().text();
                 var qty = el.value;
                 var total = price * qty;
-                $(el).closest('td').next().text(total);
+                $(el).closest('td').next().find('input').val(total);
                 refreshTotal();
             };
         </script>

@@ -49,8 +49,8 @@
                                     <option selected disabled>--Select Role--</option>
                                     <option value="admin">Admin</option>
                                     <option value="engineer">Engineer</option>
-                                    <optoin value="accountant">Accountant</option>
-                                    <option value="manager">Manager</option>
+                                    <option value="accountant">Accountant</option>
+                                    <option value="employee">Employee</option>
                                     </select>
                                     @if ($errors->has('role'))
                                         <span class="invalid-feedback" role="alert">

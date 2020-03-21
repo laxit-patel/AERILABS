@@ -46,9 +46,7 @@
 
                         <th data-field="report_date" data-sortable="true">Report Date</th>
                         <th data-field="report" data-sortable="true">Report</th>
-                        <th data-field="invoice" data-sortable="true">Invoice</th>
-
-
+                        <th data-field="invoice" data-sortable="true">Amount</th>
                         <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
 
                         </thead>
@@ -59,8 +57,8 @@
                         @foreach ($inwards as $inward)
                             <tr class="text-white " data-inward={{ $inward->inward_id }}>
                                 <td>{{ $inward->client_name }}</td>
+                                <td>{{ $inward->test_name }}</td>
                                 <td>{{ $inward->inward_report_date }}</td>
-                                <td>{{ $inward->record_report_number }}</td>
                                 <td>{{ $inward->invoice_total }}</td>
 
 

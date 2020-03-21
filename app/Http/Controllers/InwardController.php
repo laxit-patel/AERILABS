@@ -24,8 +24,8 @@ class   InwardController extends Controller
         $users = DB::select("select id,name from users where role ='engineer' ");
 
         $inward = DB::table('inwards')
-            ->join('records','inward_id','=','records.record_inward')
             ->join('clients','inward_client','=','clients.client_id')
+            ->where('inward_pending','=',1)
             ->get();
 
         return view('inward', ['inwards' => $inward , 'users' => $users], compact('records'));
@@ -36,7 +36,9 @@ class   InwardController extends Controller
 
         $inward = DB::table('inwards')
             ->join('clients','inward_client','=','clients.client_id')
+            ->join('tests','inward_test','=','tests.test_id')
             ->leftJoin('invoices','inward_id','=','invoices.invoice_inward')
+            ->where('inward_pending','=',0)
             ->get();
 
 
@@ -194,7 +196,7 @@ class   InwardController extends Controller
     public function status($inward_id,$record_id, Request $request)
     {
         $request->validate([
-            'test_report_number' => 'required',
+            'record_report_number' => 'required | unique:records',
             'test_final_report' => 'required | file | mimes:xls,xlsx,docx,xltx,pdf'
         ]);
 
@@ -215,7 +217,7 @@ class   InwardController extends Controller
             DB::table('records')->where('record_id',$record_id)->update(
                 array(
                     'record_status' => 'Tested',
-                    'record_report_number' => $request->test_report_number,
+                    'record_report_number' => $request->record_report_number,
                     'record_report_file' => $final_report_path
                 ));
 

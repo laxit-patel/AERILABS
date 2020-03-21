@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use DB;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -28,7 +29,8 @@ class HomeController extends Controller
             ->get();
 
 
+        $current_date_time = Carbon::now()->toDateTimeString(); // Produces something like "2019-03-11 12:25:00"
 
-        return view('dashboard',compact('tests'));
+        return view('dashboard',compact('tests', 'current_date_time'));
     }
 }

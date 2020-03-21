@@ -9,8 +9,8 @@
 
 @section('content')
     @include('layouts.headers.cards')
-    
-       
+
+
 
         <div class="container-fluid mt--7 ">
 
@@ -24,7 +24,7 @@
                         </button>
                     </div>
                 @endif
-            </div>    
+            </div>
     <div class="col-xl-12 mb-5 mb-xl-0 ">
     <div class="fresh-table full-color-azure shadow-primary bg-gradient-darker">
                     <!--
@@ -32,12 +32,12 @@
                     Available colors only for the toolbar: toolbar-color-blue, toolbar-color-azure, toolbar-color-green, toolbar-color-red, toolbar-color-orange
                     -->
                     <div class="toolbar ">
-                      
+
                     &nbsp;
                     <div class=" icon-shape bg-gradient-blue text-white rounded-circle shadow">
-                        <i class="fas fa-user "></i> 
+                        <i class="fas fa-user "></i>
                             </div> &nbsp;Clients
-                        
+
                     </div>
 
                     <table id="fresh-table" class="table">
@@ -50,34 +50,34 @@
                                   <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
                                 </thead>
                                 <tbody>
-                                  
-                                @foreach ($clients as $client)
-                          
 
-                                <tr class="text-white">
-                                
+                                @foreach ($clients as $client)
+
+
+                                <tr class="text-white" data-client={{ $client->client_id }}>
+
                                 <td>{{ $client->client_id }}</td>
                                 <td>{{ $client->client_name }}</td>
                                 <td>{{ $client->client_email }}</td>
                                 <td>{{ $client->client_phone }}</td>
                                 <td>{{ $client->client_address }}</td>
-                                
+
                                 </tr>
-                                
-                    
+
+
                             @endforeach
-                                
+
                                 </tbody>
                               </table>
-                    </div>  
+                    </div>
     </div>
-    
+
 </div>
         @include('layouts.footers.auth')
     </div>
-    
 
-   
+
+
 
 
 @endsection
@@ -109,7 +109,7 @@ var $alertBtn = $('#alertBtn')
 window.operateEvents = {
   
   'click .edit': function (e, value, row, index) {
-    location.href = '/edit/'+row._data.inward;
+    location.href = '/ledger/view/'+row._data.client;
   },
   
 }
@@ -118,7 +118,7 @@ function operateFormatter(value, row, index) {
   return [
     '<div class="table-action edit"  >',
                                 '<a class=" icon-shape bg-gradient-blue text-white rounded-circle shadow">',
-                                '<i class="fas fa-edit "></i>',
+                                '<i class="fas fa-book "></i>',
                                 '</a>',
                                 '</div>',
     

@@ -164,13 +164,13 @@
 
 
                                 <div class="row" id="report_input_fields" >
-                                    <div class=" col-md-4 form-group{{ $errors->has('test_report_number') ? ' has-danger' : '' }}">
+                                    <div class=" col-md-4 form-group{{ $errors->has('record_report_number') ? ' has-danger' : '' }}">
                                         <label class="form-control-label" for="input-reference">{{ __('Report Number') }}</label>
-                                        <input type="text" name="test_report_number" id="test_report_number" class="form-control form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_report_number') ? ' is-invalid' : '' }}" placeholder="{{ __('Report Number') }}"     required >
+                                        <input type="text" name="record_report_number" id="test_report_number" class="form-control form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('record_report_number') ? ' is-invalid' : '' }}" placeholder="{{ __('Report Number') }}"     required >
 
-                                        @if ($errors->has('test_report_number'))
+                                        @if ($errors->has('record_report_number'))
                                             <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('test_report_number') }}</strong>
+                                            <strong>{{ $errors->first('record_report_number') }}</strong>
                                         </span>
                                         @endif
                                     </div>

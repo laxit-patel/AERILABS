@@ -54,10 +54,8 @@
                                 <td>{{ $client->client_name }}</td>
                                 <td>{{ $client->client_gstin }}</td>
                                 <td>{{ $client->client_receivable }}</td>
-                                <td>{{ $client->client_credit   }}</td>
-
+                                <td>{{ $client->client_credit }}</td>
                                 <td>
-
                                     <a href="#!" class="avatar  bg-success  rounded-circle">
                                         <i class="fa fa-print"></i>
                                     </a>

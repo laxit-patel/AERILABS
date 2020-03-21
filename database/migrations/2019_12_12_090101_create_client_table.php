@@ -16,10 +16,12 @@ class CreateClientTable extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->string('client_id')->primary();
             $table->string('client_name');
-            $table->string('client_phone');
-            $table->string('client_email');
-            $table->string('client_address');
-            $table->string('client_gstin');
+            $table->string('client_phone')->default(NULL)->nullable();
+            $table->string('client_email')->default(NULL)->nullable();
+            $table->string('client_whatsapp')->default(NULL)->nullable();
+            $table->string('client_account_person')->default(NULL)->nullable();
+            $table->string('client_address')->default(NULL)->nullable();
+            $table->string('client_gstin')->default(NULL)->nullable();
             $table->enum('client_type', array('Regular', 'Pseudo'))->default('Regular')->nullable();
             $table->string('client_debit')->default(NULL)->nullable();
             $table->string('client_credit')->default(NULL)->nullable();

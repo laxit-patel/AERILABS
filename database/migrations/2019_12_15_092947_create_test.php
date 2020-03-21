@@ -18,14 +18,11 @@ class CreateTest extends Migration
             $table->string('test_iscode');
             $table->string("test_name");
             $table->string('test_material');
-            $table->foreign("test_material")
-            ->references('material_id')->on('materials');
+            $table->foreign("test_material")->references('material_id')->on('materials');
             $table->string("test_rate");
-            $table->string("test_rate_mes");;
             $table->string("test_worksheet");
-            $table->string("test_report");
-            $table->string("test_duration");
-            $table->string('mode_amount')->nullable();
+            $table->string("test_report")->default(NULL)->nullable();
+            $table->string("test_duration")->default(NULL)->nullable();
             $table->boolean('exists')->default(1);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
